@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>아침 날씨</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <div>
+        <p class="greeting" id="greeting">좋은 아침이에요</p>
+        <h1 id="place">위치 불러오는 중…</h1>
+        <p class="date" id="date"></p>
+      </div>
+      <button class="icon-btn" id="settingsBtn" aria-label="설정">⚙️</button>
+    </header>
+
+    <section class="card hero" id="hero">
+      <div class="hero-icon" id="nowIcon">⏳</div>
+      <div class="hero-main">
+        <div class="temp" id="nowTemp">--°</div>
+        <div class="desc" id="nowDesc">날씨를 불러오는 중</div>
+        <div class="sub" id="nowSub"></div>
+      </div>
+    </section>
+
+    <section class="card briefing">
+      <h2>오늘의 브리핑</h2>
+      <ul id="briefing"></ul>
+    </section>
+
+    <section class="grid" id="stats"></section>
+
+    <section class="card">
+      <h2>시간별 예보</h2>
+      <div class="hourly" id="hourly"></div>
+    </section>
+
+    <section class="card">
+      <h2>내일</h2>
+      <div id="tomorrow" class="tomorrow"></div>
+    </section>
+
+    <p class="footer">데이터: <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a> · <span id="updated"></span></p>
+  </main>
+
+  <dialog id="settings">
+    <form method="dialog" class="settings-form">
+      <h2>설정</h2>
+
+      <label>도시 검색</label>
+      <div class="row">
+        <input id="cityInput" type="text" placeholder="예: 서울, 부산, Tokyo" autocomplete="off" />
+        <button type="button" id="searchBtn">검색</button>
+      </div>
+      <ul id="cityResults" class="results"></ul>
+      <button type="button" id="geoBtn" class="secondary">📍 현재 위치 사용</button>
+
+      <label for="alarmTime">아침 알림 시간</label>
+      <div class="row">
+        <input id="alarmTime" type="time" value="07:00" />
+        <label class="switch"><input id="alarmOn" type="checkbox" /> 알림 켜기</label>
+      </div>
+      <p class="hint">이 페이지가 열려 있는 동안 지정한 시간에 브라우저 알림으로 오늘 날씨를 알려드려요.</p>
+      <button type="button" id="testNotify" class="secondary">🔔 알림 테스트</button>
+
+      <menu><button value="close">닫기</button></menu>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
